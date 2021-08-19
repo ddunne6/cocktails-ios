@@ -11,6 +11,11 @@
 		6372E36F26CE78CB003CC2AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372E36E26CE78CB003CC2AC /* ContentView.swift */; };
 		6372E37126CE78CC003CC2AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6372E37026CE78CC003CC2AC /* Assets.xcassets */; };
 		6372E37426CE78CC003CC2AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6372E37326CE78CC003CC2AC /* Preview Assets.xcassets */; };
+		6372E37E26CE8345003CC2AC /* CocktailImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372E37D26CE8345003CC2AC /* CocktailImage.swift */; };
+		6372E38026CEADED003CC2AC /* cocktailData.json in Resources */ = {isa = PBXBuildFile; fileRef = 6372E37F26CEADED003CC2AC /* cocktailData.json */; };
+		6372E38226CEAE15003CC2AC /* Cocktail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372E38126CEAE15003CC2AC /* Cocktail.swift */; };
+		6372E38426CEB203003CC2AC /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372E38326CEB203003CC2AC /* ModelData.swift */; };
+		6372E38926CEB313003CC2AC /* CocktailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6372E38826CEB313003CC2AC /* CocktailRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +25,11 @@
 		6372E37026CE78CC003CC2AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6372E37326CE78CC003CC2AC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6372E37526CE78CC003CC2AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6372E37D26CE8345003CC2AC /* CocktailImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailImage.swift; sourceTree = "<group>"; };
+		6372E37F26CEADED003CC2AC /* cocktailData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cocktailData.json; sourceTree = "<group>"; };
+		6372E38126CEAE15003CC2AC /* Cocktail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cocktail.swift; sourceTree = "<group>"; };
+		6372E38326CEB203003CC2AC /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		6372E38826CEB313003CC2AC /* CocktailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CocktailRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +43,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		632709A026CEC8BC003228FA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		6372E36026CE78CB003CC2AC = {
 			isa = PBXGroup;
 			children = (
@@ -53,7 +70,10 @@
 			isa = PBXGroup;
 			children = (
 				6372E36C26CE78CB003CC2AC /* CocktailsApp.swift */,
-				6372E36E26CE78CB003CC2AC /* ContentView.swift */,
+				632709A026CEC8BC003228FA /* Extensions */,
+				6372E38726CEB2BC003CC2AC /* Resources */,
+				6372E38626CEB297003CC2AC /* Model */,
+				6372E38526CEB27D003CC2AC /* Views */,
 				6372E37026CE78CC003CC2AC /* Assets.xcassets */,
 				6372E37526CE78CC003CC2AC /* Info.plist */,
 				6372E37226CE78CC003CC2AC /* Preview Content */,
@@ -67,6 +87,33 @@
 				6372E37326CE78CC003CC2AC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6372E38526CEB27D003CC2AC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6372E36E26CE78CB003CC2AC /* ContentView.swift */,
+				6372E38826CEB313003CC2AC /* CocktailRow.swift */,
+				6372E37D26CE8345003CC2AC /* CocktailImage.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6372E38626CEB297003CC2AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6372E38326CEB203003CC2AC /* ModelData.swift */,
+				6372E38126CEAE15003CC2AC /* Cocktail.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6372E38726CEB2BC003CC2AC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6372E37F26CEADED003CC2AC /* cocktailData.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +174,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6372E37426CE78CC003CC2AC /* Preview Assets.xcassets in Resources */,
+				6372E38026CEADED003CC2AC /* cocktailData.json in Resources */,
 				6372E37126CE78CC003CC2AC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,8 +186,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6372E37E26CE8345003CC2AC /* CocktailImage.swift in Sources */,
 				6372E36F26CE78CB003CC2AC /* ContentView.swift in Sources */,
+				6372E38426CEB203003CC2AC /* ModelData.swift in Sources */,
 				6372E36D26CE78CB003CC2AC /* CocktailsApp.swift in Sources */,
+				6372E38926CEB313003CC2AC /* CocktailRow.swift in Sources */,
+				6372E38226CEAE15003CC2AC /* Cocktail.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
