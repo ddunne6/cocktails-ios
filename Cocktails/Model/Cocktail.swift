@@ -45,7 +45,8 @@ struct Cocktail: Hashable, Codable {
     
     var strDrinkThumb: String
     
-    struct IngredientAndMeasure {
+    struct IngredientAndMeasure: Identifiable {
+        var id = UUID()
         var ingredient: String
         var measure: String
     }
