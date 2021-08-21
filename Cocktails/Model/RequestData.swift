@@ -7,8 +7,8 @@
 
 import Foundation
 
-func requestCocktail(searchTerm: String, completionBlock:@escaping ([Cocktail]) -> Void) -> Void {
-    print("started >>> requestCocktail()")
+func requestCocktailByName(searchTerm: String, completionBlock:@escaping ([Cocktail]) -> Void) -> Void {
+    print("started >>> requestCocktailByName()")
     
     let url = URL(string: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=\(searchTerm)")!
 
@@ -19,7 +19,7 @@ func requestCocktail(searchTerm: String, completionBlock:@escaping ([Cocktail]) 
     }
 
     task.resume()
-    print("finished >>> requestCocktail()")
+    print("finished >>> requestCocktailByName()")
 }
 
 func parseCocktails(data: String) -> [Cocktail] {
@@ -30,7 +30,7 @@ func parseCocktails(data: String) -> [Cocktail] {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         let decodedCountries = try decoder.decode([Cocktail].self, from: json)
-        decodedCountries.forEach{print($0)}
+        //decodedCountries.forEach{print($0)}
         return decodedCountries
     } catch {
         fatalError("Couldn't parse json response")

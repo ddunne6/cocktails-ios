@@ -8,28 +8,48 @@
 import SwiftUI
 
 struct CocktailList: View {
-    @State private var cocktails: [Cocktail]?
+    @State private var cocktails: [Cocktail]
+    @State private var searchText = ""
+    
     var body: some View {
         VStack {
             NavigationView {
-                if cocktails != nil {
-                    List(cocktails!, id: \.idDrink) { cocktail in
+                VStack {
+                    TextField("Search", text: $searchText, onCommit:  {
+                        getCocktails(searchTerm: searchText)
+                    })
+                    .padding(7)
+                    .padding(.horizontal, 25)
+                    .background(Color(.systemGray6))
+                    .cornerRadius(8)
+                    .overlay(
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                                .foregroundColor(.gray)
+                                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                                .padding(.leading, 8)
+                        }
+                    )
+                    .padding(.horizontal, 10)
+                    List(cocktails, id: \.idDrink) { cocktail in
                         NavigationLink(destination: CocktailDetail(fromCocktail: cocktail)) {
                             CocktailRow(fromCocktail: cocktail)
                         }
                     }
-                    .navigationTitle("Cocktail List")
                 }
-            }
-        }.onAppear {
-            requestCocktail(searchTerm: "lime") { cocktails in
-                self.cocktails = cocktails
+                .navigationTitle("Search")
             }
         }
     }
     
+    func getCocktails(searchTerm: String) {
+        requestCocktailByName(searchTerm: searchTerm) { cocktails in
+            self.cocktails = cocktails
+        }
+    }
+    
     init() {
-        self.cocktails = nil
+        self.cocktails = []
     }
 }
 
