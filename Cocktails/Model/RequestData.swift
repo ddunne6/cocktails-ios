@@ -7,14 +7,29 @@
 
 import Foundation
 
+func requestRandomCocktail(completionBlock:@escaping ([Cocktail]) -> Void) -> Void {
+    print("started >>> requestRandomCocktail()")
+    
+    let url = URL(string: "https://www.thecocktaildb.com/api/json/v1/1/random.php")
+
+    let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
+        guard let data = data else { return }
+        completionBlock(parseCocktails(data: String(data: data, encoding: .utf8)!))
+    }
+
+    task.resume()
+    print("finished >>> requestRandomCocktail()")
+}
+
 func requestCocktailByName(searchTerm: String, completionBlock:@escaping ([Cocktail]) -> Void) -> Void {
     print("started >>> requestCocktailByName()")
     
-    let url = URL(string: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=\(searchTerm)")!
+    let searchTerm = searchTerm.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+    
+    let url = URL(string: "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=\( searchTerm!)")
 
-    let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
+    let task = URLSession.shared.dataTask(with: url!) {(data, response, error) in
         guard let data = data else { return }
-        //print(String(data: data, encoding: .utf8)!)
         completionBlock(parseCocktails(data: String(data: data, encoding: .utf8)!))
     }
 
@@ -26,6 +41,9 @@ func parseCocktails(data: String) -> [Cocktail] {
     do {
         let dataAsDict = convertStringToDictionary(text: data)
         let drinks = dataAsDict!["drinks"]
+        if drinks is NSNull {
+            return []
+        }
         let json = try JSONSerialization.data(withJSONObject: drinks!)
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase

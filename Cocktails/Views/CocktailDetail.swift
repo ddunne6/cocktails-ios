@@ -12,7 +12,13 @@ struct CocktailDetail: View {
     var cocktail: Cocktail
     
     init(fromCocktail: Cocktail?) {
-        cocktail = fromCocktail!
+        if fromCocktail != nil {
+            cocktail = fromCocktail!
+        }
+        else {
+            let cocktails: [Cocktail] = load("cocktailData.json")
+            cocktail = cocktails[0]
+        }
         SwURL.setImageCache(type: .persistent)
     }
     
@@ -24,6 +30,7 @@ struct CocktailDetail: View {
                 Text("Instructions")
                     .font(.headline)
                 Text(cocktail.strInstructions)
+                    .fixedSize(horizontal: false, vertical: true)
                     .font(.body)
                 HStack {
                     Spacer()

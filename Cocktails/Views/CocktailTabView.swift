@@ -18,11 +18,11 @@ struct CocktailTabView: View {
                 .tabItem {
                     Label("Favourites", systemImage: "star.fill")
                 }
-            CocktailList()
+            CocktailRandomView()
                 .tabItem {
                     Label("Random", systemImage: "cube.fill")
                 }
-            CocktailList()
+            SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gearshape.fill")
                 }
