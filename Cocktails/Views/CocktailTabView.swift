@@ -14,10 +14,6 @@ struct CocktailTabView: View {
                 .tabItem {
                     Label("Search", systemImage: "magnifyingglass")
                 }
-            CocktailList()
-                .tabItem {
-                    Label("Favourites", systemImage: "star.fill")
-                }
             CocktailRandomView()
                 .tabItem {
                     Label("Random", systemImage: "cube.fill")
